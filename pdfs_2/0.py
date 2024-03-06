@@ -4,8 +4,8 @@ from pdfminer.high_level import extract_text
 import os
 import fitz
 
-doc_num = "0608990"     # 0629932 sí 0628716 no
-doc_dir = doc_num + ".pdf"
+doc_num = "0675808_A1"     # 0629932 sí 0628716 no
+doc_dir = "pdfs/" + doc_num + ".pdf"
 
 text_full_l = []
 
