@@ -5,6 +5,7 @@
 import json
 import os
 import fitz
+import re
 
 # lista = []
 # a_embeber = [["a", "b"], ["c", "d"], ["e", "f", "g", "h"], ["i"], ["j", "k", "l", "m"]]
@@ -29,10 +30,12 @@ textos = []
 # that directory
 for filename in os.listdir(directory):
     doc = fitz.open("pdfs/" + filename) # open a document
+    doc_num = re.sub(".pdf", "", filename)
+
     textos.append([])
     for page in doc: # iterate the document pages
         text = page.get_text() # get plain text encoded as UTF-8
-        textos[contador].append(text)
+        textos[contador].append({"doc_num": doc_num, "texto": text})
     contador = contador + 1
 
 # Crea plaintext.json si no existe

@@ -2,14 +2,22 @@ Esto tiene el propósito de, primero, averiguar cómo transformar un pdf a texto
 procesable (tal vez haya varias formas, cada una con sus ventajas), y, segundo,
 automatizar ese proceso para de hecho tener una base de datos usable.
 
-Guardar esto en github. (entender bien y con tiempo cómo funciona eso de las
-keys)
+Hay que ver cómo quitar que git me pida la passphrase cada vez que pusheo.
+
+Hay que pensar también si hacerlo en tandas porque el método que elegí tarda
+un poquito más de un minuto por archivo .pdf. Tons si hago todas las tesis 
+tardaría como ocho horas.
 
 0.py es uno para testear
 Creo que conviene lo que hace PyMuPDF de guardar la información de cada página
 como un elemento independiente, entonces hay que
-    1. desarrollar una manera de hacer una lista nesteada en el json
+    1. matchear cada texto con su respectivo título y año. Esto se hace con el
+    doc_num.
+        1.1 Sacar el doc_num como parte de la lista
     2. iterar sobre cada archivo
+    3. desarrollar una manera de hacer una lista nesteada en el json
+        3.1 leer el json a una lista en python y luego 
+        3.2 namás appendearle la lista nesteada.
 
 
 1.py pretende iterar cada .pdf y sacar un .txt. hay que solucionar 0.py antes
@@ -46,3 +54,6 @@ saque el error "Data-loss while decompressing corrupted data". No sé qué pex
         Hay que descargar un par manualmente y testear
 
 SOLUCIÓN: En vez de pdfminer.six, hay que usar PyMuPDF.
+
+Guardar esto en github. (entender bien y con tiempo cómo funciona eso de las
+keys)
