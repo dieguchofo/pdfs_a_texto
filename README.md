@@ -2,25 +2,16 @@ Esto tiene el propósito de, primero, averiguar cómo transformar un pdf a texto
 procesable (tal vez haya varias formas, cada una con sus ventajas), y, segundo,
 automatizar ese proceso para de hecho tener una base de datos usable.
 
-Hay que ver cómo quitar que git me pida la passphrase cada vez que pusheo.
+pdfs/0.py es el que produce plaintext.json. Se tiene que correr desde 
+pdfs_a_texto. Me salió de chiripa pero ya está.
+    Input: pdfs/ (un folder con todos los pdfs)
+    Output: plaintext.json (un json con {"doc_num": "x", "texto": "y"})
 
-Hay que pensar también si hacerlo en tandas porque el método que elegí tarda
-un poquito más de un minuto por archivo .pdf. Tons si hago todas las tesis 
-tardaría como ocho horas.
+plaintext.json tiene todos los trabajos de titulación junto con sus doc_nums.
 
-0.py es uno para testear
-Creo que conviene lo que hace PyMuPDF de guardar la información de cada página
-como un elemento independiente, entonces hay que
-    1. matchear cada texto con su respectivo título y año. Esto se hace con el
-    doc_num.
-        1.1 Sacar el doc_num como parte de la lista
-    2. iterar sobre cada archivo
-    3. desarrollar una manera de hacer una lista nesteada en el json
-        3.1 leer el json a una lista en python y luego 
-        3.2 namás appendearle la lista nesteada.
-
-
-1.py pretende iterar cada .pdf y sacar un .txt. hay que solucionar 0.py antes
+Creo que vale la pena limpiarlo (porque todo está en una sola línea). Luego hay
+que unirlo con el resto de metadatos (que en realidad creo que conviene que
+sean solo el doc_num, el título y el año. Es decir, sin el nombre)
 
 ### COSAS QUE PENSÉ SOBRE LA CUANTIFICACIÓN DE ESTOS TEXTOS ###
 
@@ -57,3 +48,17 @@ SOLUCIÓN: En vez de pdfminer.six, hay que usar PyMuPDF.
 
 Guardar esto en github. (entender bien y con tiempo cómo funciona eso de las
 keys)
+
+0.py es uno para testear
+Creo que conviene lo que hace PyMuPDF de guardar la información de cada página
+como un elemento independiente, entonces hay que
+    1. matchear cada texto con su respectivo título y año. Esto se hace con el
+    doc_num.
+        1.1 Sacar el doc_num como parte de la lista
+    2. iterar sobre cada archivo
+    3. desarrollar una manera de hacer una lista nesteada en el json
+        3.1 leer el json a una lista en python y luego 
+        3.2 namás appendearle la lista nesteada.
+
+[ESTO RESULTÓ SER IRRELEVANTE] 1.py pretende iterar cada .pdf y sacar un .txt.
+hay que solucionar 0.py antes
